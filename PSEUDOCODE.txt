@@ -1,0 +1,31 @@
+Pseudocode — Connect Four
+
+SET ROWS = 6, COLS = 7
+CREATE grid[ROWS][COLS] filled with ' '
+
+FUNCTION dropDisc(col, disc):
+    IF col out of range OR top cell not empty: RETURN -1
+    FOR r from ROWS-1 down to 0:
+        IF grid[r][col] == ' ':
+            grid[r][col] = disc
+            RETURN r
+    RETURN -1
+
+FUNCTION hasConnectFourFrom(row, col, disc):
+    FOR each direction in [(0,1),(1,0),(1,1),(1,-1)]:
+        count = 1
+        count += countDirection(row, col, +dr, +dc, disc)
+        count += countDirection(row, col, -dr, -dc, disc)
+        IF count >= 4: RETURN TRUE
+    RETURN FALSE
+
+MAIN LOOP:
+    current = 'R'
+    WHILE TRUE:
+        printBoard()
+        col = promptUser(1..7)
+        row = dropDisc(col-1, current)
+        IF row == -1: print "invalid"; CONTINUE
+        IF hasConnectFourFrom(row, col-1, current): printBoard(); print current + " wins"; BREAK
+        IF board.isFull(): printBoard(); print "Tie"; BREAK
+        current = (current == 'R') ? 'Y' : 'R'

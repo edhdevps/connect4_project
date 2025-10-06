@@ -1,0 +1,9 @@
+Test ID,Scenario,Input Sequence (columns),Expected Result,Notes
+C4-01,Horizontal win bottom row for R,"1,2,1,2,1,2,1",R wins,Simple horizontal
+C4-02,Vertical win for Y,"1,2,1,2,3,2,4,2",Y wins,Vertical in column 2
+C4-03,Diagonal (/) win for R,"4,3,3,2,2,1,2,1,1,1",R wins,Up-left diagonal
+C4-04,Diagonal (\) win for Y,"1,1,2,2,3,3,4,3,4,4,5,4",Y wins,Up-right diagonal
+C4-05,Invalid column (out of range),"-1,8,1,1,1,1",Prompts re-enter,Input validation
+C4-06,Column full,"1 repeated 6 times then 1 again",Prompt 'column full' and re-ask,Full column
+C4-07,Tie (board filled),"Play to fill without 4-in-row",Tie,Edge coverage
+C4-08,Alternate turns enforced,"any valid sequence",No double moves,Turn logic
